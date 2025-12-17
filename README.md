@@ -1,4 +1,1 @@
-This repository contains my solutions to LeetCode SQL problems.
-The focus is on writing clean, correct, and interview-ready SQL queries.
-
-This repository is maintained as part of continuous SQL practice and preparation.
+This repository contains my curated solutions to LeetCode SQL problems, with a strong focus on correctness, readability, and real interview-oriented query writing. Each solution demonstrates a structured approach to solving database problems using SQL best practices, emphasizing clear logic and efficient queries. The repository is actively maintained as part of continuous skill development and hands-on preparation for technical interviews.
