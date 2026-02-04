@@ -1,0 +1,26 @@
+--Leetcode #1321 : Restaurant Growth
+-- Leetcode Link : https://leetcode.com/problems/restaurant-growth/
+
+--Approach :
+--Fix 7-day moving average by aggregating daily revenue first
+-- Aggregate customer transactions per day before applying window
+-- Prevent double counting when multiple customers visit on same date
+-- Apply 7-day rolling sum and average on daily totals
+WITH daily AS (
+    SELECT
+        visited_on,
+        SUM(amount) AS amount
+    FROM Customer
+    GROUP BY visited_on
+)
+SELECT
+    d1.visited_on,
+    SUM(d2.amount) AS amount,
+    ROUND(AVG(d2.amount), 2) AS average_amount
+FROM daily d1
+JOIN daily d2
+    ON d2.visited_on BETWEEN DATE_SUB(d1.visited_on, INTERVAL 6 DAY)
+                         AND d1.visited_on
+GROUP BY d1.visited_on
+HAVING COUNT(*) = 7
+ORDER BY d1.visited_on;
